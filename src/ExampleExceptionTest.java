@@ -15,8 +15,9 @@ public class ExampleExceptionTest {
   public static Object[][] data() {
     return new Object[][]{
         {2, 2, 4},
-        {2, 3, 6}
-        // TODO add 2 more test data here
+        {2, 3, 6},
+        {2100, 20, 40},
+        {111111, 100003, 600}
     };
   }
 
@@ -29,8 +30,11 @@ public class ExampleExceptionTest {
   public static Object[][] negativeData() {
     return new Object[][]{
         {-2, 2},
-        {2, -2}
-        // TODO add 2 more test data here
+        {2, -2},
+        {0, -3},
+        {-3, 0},
+        {0, 3},
+        {0, 0}
     };
   }
 
