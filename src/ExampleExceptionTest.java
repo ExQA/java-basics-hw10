@@ -16,8 +16,8 @@ public class ExampleExceptionTest {
     return new Object[][]{
         {2, 2, 4},
         {2, 3, 6},
-        {2100, 20, 40},
-        {111111, 100003, 600}
+        {2100, 20, 42000},
+        {1111, 1003, 1114333}
     };
   }
 
@@ -40,12 +40,22 @@ public class ExampleExceptionTest {
 
   @Test(dataProvider = "data")
   public void testRectangleArea(int a, int b, int c) {
-    // TODO put your code here
+      int area = ExampleException.rectangleArea(a, b);
+      assertEquals(area, c);
   }
-
 
   @Test(dataProvider = "negativeData")
   public void testRectangleAreaNegative(int a, int b) {
-    // TODO put your code here
+    try {
+      ExampleException.rectangleArea(a, b);
+      fail();
+    } catch (IllegalArgumentException ex) {
+      assertEquals(ex.getMessage(), "Input value is below zero.");
+    }
+  }
+
+  @Test(dataProvider = "negativeData", expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "Input value is below zero.")
+  public void testRectangleAreaNegativeCool(int a, int b) {
+      ExampleException.rectangleArea(a, b);
   }
 }
